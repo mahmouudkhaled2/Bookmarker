@@ -214,11 +214,8 @@ function search() {
     for (var i = 0; i < allBookmarks.length; i++) {
         if (allBookmarks[i].name.includes(searchInput.value.toLowerCase())) {
             displayOneBookmark(i);
-        } else {
-            sitesRow.innerHTML = "<div class='text-center'> No Results... </div>";
         }
     }
-    checkDeleteBtn();
 }
 
 var bookmarksCount = document.getElementById('bookmarksCount');
