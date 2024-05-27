@@ -159,8 +159,22 @@ h2 {
 .valid-data {
   color: #4db465;
   border: none;
+
 }
 
 .search-input {
   transition: all 0.5s;
+}
+
+
+@media (max-width: 991px) {
+  .inner {
+    width: 100% !important;
+  }
+
+  
+  .clear-all-bookmarks {
+    flex-direction: column !important;
+    gap: 15px;
+  }
 }

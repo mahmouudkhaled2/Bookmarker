@@ -44,7 +44,7 @@
           <hr class="mt-5 mb-0" />
           <div class="row">
             <div class="col-12">
-              <div class="mt-5 w-75 mx-auto">
+              <div class="inner mt-5 w-75 mx-auto">
                 <label for="site-name" class="mb-2 text-white fw-bolder fs-5">
                   <i class="fa-solid fa-book-bookmark me-2"></i> SiteName
                 </label>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="col-12">
-              <div class="mt-4 w-75 mx-auto">
+              <div class="inner mt-4 w-75 mx-auto">
                 <label for="site-url" class="mb-2 text-white fw-bolder fs-5"
                   ><i class="fa-solid fa-link me-2"></i> Site URL</label
                 >
@@ -99,7 +99,7 @@
 
         <div class="row mb-5">
           <div class="col">
-            <div class="search-main-box d-flex align-items-center w-75 m-auto">
+            <div class="inner search-main-box d-flex align-items-center w-75 m-auto">
               <div
                 class="search-input-box border-end border-3 border-white pe-3 me-3 w-100"
               >
@@ -122,15 +122,16 @@
           </div>
         </div>
 
-        <div id="sitesRow" class="row g-4 my-5 w-75 m-auto"></div>
+        <div id="sitesRow" class="row inner g-4 my-5 w-75 m-auto"></div>
 
         <div
-          class="clear-all-bookmarks w-75 m-auto d-flex justify-content-between align-items-center"
+          class="clear-all-bookmarks inner w-75 m-auto d-flex justify-content-between align-items-center"
         >
           <h6 class="text-white fs-5 fw-bold m-0">
             All Bookmarks: <span id="bookmarksCount"></span>
           </h6>
           <button
+          id="deleteAllBtn"
             class="py-2 px-3 border-0 rounded bg-danger text-white fw-medium"
             onclick="resetAllBookmarks()"
           >
@@ -142,6 +143,7 @@
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/sweetalert.min.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>

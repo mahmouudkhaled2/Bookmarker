@@ -105,6 +105,7 @@ function addBookmark() {
             displayAllBookmarks();
             setBookmarksCount()
             removeValidationIcon();
+            checkDeleteBtn()
         }
 
     } else {
@@ -120,7 +121,7 @@ function clearFields() {
 
 function displayOneBookmark(index) {
     sitesRow.innerHTML += `
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-xl-4">
         <div class="url-box">
         <h5 class="fw-bold p-3 text-center capitalize">${allBookmarks[index].name}</h5>
             <div class="btn-icons">
@@ -152,12 +153,27 @@ displayAllBookmarks();
 
 function deleteBookmark(index) {
 
-    allBookmarks.splice(index, 1);
-
-    localStorage.setItem('allBookmarks', JSON.stringify(allBookmarks));
-
-    displayAllBookmarks();
-    setBookmarksCount();
+    swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+            allBookmarks.splice(index, 1);
+            
+            localStorage.setItem('allBookmarks', JSON.stringify(allBookmarks));
+        
+            displayAllBookmarks();
+              setBookmarksCount();
+              checkDeleteBtn()
+            swal("deleted!", {
+            icon: "success",
+          });
+        }
+      });
 }
 // Create Var to Store The Index Value
 var bookmarkIndex;
@@ -202,6 +218,7 @@ function search() {
             sitesRow.innerHTML = "<div class='text-center'> No Results... </div>";
         }
     }
+    checkDeleteBtn();
 }
 
 var bookmarksCount = document.getElementById('bookmarksCount');
@@ -213,8 +230,45 @@ function setBookmarksCount() {
 setBookmarksCount();
 
 function resetAllBookmarks() {
-    bookmarksCount.innerHTML = '0';
-    allBookmarks = [];
-    localStorage.clear();
-    displayAllBookmarks();
+
+    if (allBookmarks.length > 0) {
+            swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+            
+            bookmarksCount.innerHTML = '0';
+            allBookmarks = [];
+            localStorage.clear();
+              displayAllBookmarks();
+              checkDeleteBtn()
+          swal("deleted!", {
+              icon: "success",
+          });
+        }
+      });
+    } 
+    
+    
 }
+
+var deleteAllBtn = document.getElementById('deleteAllBtn');
+
+function checkDeleteBtn() {
+    if (allBookmarks.length == 0) {
+        sitesRow.innerHTML = '<div class="text-center fs-5 fw-medium text-white"> No Bookmarks yet !</div>'
+        deleteAllBtn.style.opacity = '0.7';
+        deleteAllBtn.style.cursor = 'not-allowed'
+    } else {
+        deleteAllBtn.style.opacity = '1';
+        deleteAllBtn.style.cursor = 'pointer'
+    }
+}
+
+checkDeleteBtn()
+
