@@ -162,6 +162,14 @@ h2 {
 
 }
 
+.search-icon {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.search-icon:hover {
+  color: #8ea3c9!important;
+}
+
 .search-input {
   transition: all 0.5s;
 }

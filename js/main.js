@@ -207,6 +207,11 @@ function updateBookmark(index) {
     removeValidationIcon()
 }
 
+
+function searchIcon() {
+    searchInput.focus();
+}
+
 function search() {
 
     sitesRow.innerHTML = "";
@@ -217,6 +222,7 @@ function search() {
         }
     }
 }
+
 
 var bookmarksCount = document.getElementById('bookmarksCount');
 
@@ -258,9 +264,16 @@ var deleteAllBtn = document.getElementById('deleteAllBtn');
 
 function checkDeleteBtn() {
     if (allBookmarks.length == 0) {
+
         sitesRow.innerHTML = '<div class="text-center fs-5 fw-medium text-white"> No Bookmarks yet !</div>'
         deleteAllBtn.style.opacity = '0.7';
-        deleteAllBtn.style.cursor = 'not-allowed'
+        deleteAllBtn.style.cursor = 'not-allowed';
+ 
+        siteNameInput.value = "";
+        siteURLInput.value = "";
+        updateButton.classList.replace("d-block", "d-none");
+        addButton.classList.replace("d-none", "d-block");
+
     } else {
         deleteAllBtn.style.opacity = '1';
         deleteAllBtn.style.cursor = 'pointer'
